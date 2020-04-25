@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_covid_19"
+            android:icon="@drawable/ic_virus"
+            android:title="@string/menu_covid_19"/>
+        <item
+            android:id="@+id/nave_symp"
+            android:icon="@drawable/ic_wc"
+            android:title="@string/menu_symptom" />
+
+        <item
+            android:id="@+id/nave_statics"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="@string/menu_statics" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_FAQ"
+                android:icon="@drawable/ic_faq"
+                android:title="@string/menu_faq" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_call"
+                android:title="@string/menu_contact" />
+
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_info"
+                android:title="@string/menu_about" />
+        </menu>
+    </item>
+</menu>
