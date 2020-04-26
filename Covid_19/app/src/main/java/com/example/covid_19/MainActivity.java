@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         tv_reg=(TextView)findViewById(R.id.tv_login);
 
+
+
+
         authoStateListner=new FirebaseAuth.AuthStateListener() {
 
 
