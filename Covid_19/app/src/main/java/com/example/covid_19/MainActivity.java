@@ -36,35 +36,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lAuth=FirebaseAuth.getInstance();
-        lDialog=new ProgressDialog(this);
+        lAuth = FirebaseAuth.getInstance();
+        lDialog = new ProgressDialog(this);
 
-        email=findViewById(R.id.txt_email);
-        password=findViewById(R.id.txt_password);
+        email = findViewById(R.id.txt_email);
+        password = findViewById(R.id.txt_password);
 
-        btn_login=findViewById(R.id.btn_login);
-        rDialog=new ProgressDialog(this);
+        btn_login = findViewById(R.id.btn_login);
+        rDialog = new ProgressDialog(this);
 
-        tv_reg=(TextView)findViewById(R.id.tv_login);
-
-
+        tv_reg = (TextView) findViewById(R.id.tv_login);
 
 
-        authoStateListner=new FirebaseAuth.AuthStateListener() {
+        authoStateListner = new FirebaseAuth.AuthStateListener() {
 
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser= lAuth.getCurrentUser();
-                if(firebaseUser != null){
+                FirebaseUser firebaseUser = lAuth.getCurrentUser();
+                if (firebaseUser != null) {
 
-                    Toast.makeText(getApplicationContext(),"Your logged In",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Your logged In", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), Home.class));
 
-                    Intent i=new Intent(MainActivity.this, Home.class);
+                    Intent i = new Intent(MainActivity.this, Home.class);
                     startActivity(i);
-                }else{
-                    Toast.makeText(getApplicationContext(),"Please Login",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -74,34 +72,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String lEmail=email.getText().toString().trim();
-                String lPassword=password.getText().toString().trim();
+                final String lEmail = email.getText().toString().trim();
+                String lPassword = password.getText().toString().trim();
 
-                if(lEmail.isEmpty() && lPassword.isEmpty()){
+                if (lEmail.isEmpty() && lPassword.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
 
-                }else if (lEmail.isEmpty()){
+                } else if (lEmail.isEmpty()) {
                     email.setError("Please Enter Email Address");
                     email.requestFocus();
 
-                }else if (lPassword.isEmpty()){
+                } else if (lPassword.isEmpty()) {
                     password.setError("Please Enter password");
                     password.requestFocus();
 
-                }else if (!(lEmail.isEmpty() && lPassword.isEmpty())){
+                } else if (!(lEmail.isEmpty() && lPassword.isEmpty())) {
 
                     rDialog.setMessage("Processing");
                     rDialog.show();
 
-                    lAuth.signInWithEmailAndPassword(lEmail,lPassword).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    lAuth.signInWithEmailAndPassword(lEmail, lPassword).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()){
+                            if (!task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Login Error, please Login Again", Toast.LENGTH_SHORT).show();
                                 rDialog.dismiss();
-                            }else{
-                                modul.email_address=lEmail;
-                                Intent intHome=new Intent(MainActivity.this,Home.class);
+                            } else {
+                                modul.email_address = lEmail;
+                                Intent intHome = new Intent(MainActivity.this, Home.class);
                                 finish();
                                 startActivity(intHome);
                                 Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
@@ -109,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }else{
-                    Toast.makeText(getApplicationContext(),"Error Occurred!",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error Occurred!", Toast.LENGTH_SHORT).show();
                     rDialog.dismiss();
                 }
             }
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         tv_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Register.class);
+                Intent intent = new Intent(MainActivity.this, Register.class);
                 startActivity(intent);
 
             }
