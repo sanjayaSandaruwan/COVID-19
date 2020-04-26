@@ -18,6 +18,7 @@ public class Corona extends AppCompatActivity {
    Button web;
    Button web2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ public class Corona extends AppCompatActivity {
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Statics");
+        getSupportActionBar().setTitle("COVID-19");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         web=findViewById(R.id.btn_web);
